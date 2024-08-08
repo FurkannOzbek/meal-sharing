@@ -15,18 +15,12 @@ app.use(bodyParser.json());
 
 const apiRouter = express.Router();
 
+app.use("/api", apiRouter);
 apiRouter.use("/nested", nestedRouter);
 apiRouter.use("/first-meal", firstMeal);
 apiRouter.use("/all-meals", allMeals);
 apiRouter.use("/future-meals", futureMeals);
 apiRouter.use("/future-meals", pastMeals);
-
-app.use("/api", apiRouter);
-app.use("/first-meal", firstMeal);
-app.use("/all-meals", allMeals);
-app.use("/future-meals", futureMeals);
-app.use("/last-meal", lastMeal);
-app.use("/past-meals", pastMeals);
 
 app.get("/", async (req, res) => {
   res.send("Welcome");
