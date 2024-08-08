@@ -4,9 +4,7 @@ import knex from "../database_client.js";
 const pastMeals = express.Router();
 
 pastMeals.get("/", async (req, res) => {
-  const result = await knex.raw("SELECT * FROM Meal WHERE `when` < NOW()");
-  // I had to do this otherwise I am getting other weird info from the database
-  const pastMeals = result[0];
+  const pastMeals = await knex("Meal").where("when", "<", knex.raw("NOW()"));
   res.send(pastMeals);
   res.end();
 });

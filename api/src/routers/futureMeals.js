@@ -4,8 +4,7 @@ import knex from "../database_client.js";
 const futureMeals = express.Router();
 
 futureMeals.get("/", async (req, res) => {
-  const result = await knex.raw("SELECT * FROM Meal WHERE `when` > NOW()");
-  const futureMeals = result[0];
+  const futureMeals = await knex("Meal").where("when", ">", knex.raw("NOW()"));
   res.send(futureMeals);
   res.end();
 });
