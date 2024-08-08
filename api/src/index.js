@@ -21,6 +21,7 @@ apiRouter.use("/first-meal", firstMeal);
 apiRouter.use("/all-meals", allMeals);
 apiRouter.use("/future-meals", futureMeals);
 apiRouter.use("/future-meals", pastMeals);
+apiRouter.use("/last-meal", lastMeal);
 
 app.get("/", async (req, res) => {
   res.send("Welcome");
