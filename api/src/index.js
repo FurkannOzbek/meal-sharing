@@ -9,6 +9,7 @@ import futureMeals from "./routers/futureMeals.js";
 import lastMeal from "./routers/lastMeal.js";
 import pastMeals from "./routers/pastMeals.js";
 import meals from "./routers/meals.js";
+import reservations from "./routers/reservations.js";
 
 const app = express();
 app.use(cors());
@@ -24,6 +25,7 @@ apiRouter.use("/future-meals", futureMeals);
 apiRouter.use("/future-meals", pastMeals);
 apiRouter.use("/last-meal", lastMeal);
 apiRouter.use("/meals", meals);
+apiRouter.use("/reservations", reservations);
 
 app.get("/", async (req, res, next) => {
   res.send("Welcome");
