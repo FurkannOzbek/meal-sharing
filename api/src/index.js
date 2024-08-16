@@ -23,9 +23,13 @@ apiRouter.use("/future-meals", futureMeals);
 apiRouter.use("/future-meals", pastMeals);
 apiRouter.use("/last-meal", lastMeal);
 
-app.get("/", async (req, res) => {
+app.get("/", async (req, res, next) => {
   res.send("Welcome");
-  res.end();
+  next();
+});
+
+app.get("/", async (req, res) => {
+  console.log("Welcome der");
 });
 
 app.listen(process.env.PORT, () => {
