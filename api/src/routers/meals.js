@@ -16,4 +16,41 @@ meals.post("/", async (req, res) => {
   }
 });
 
+meals.get("/:id", async (req, res) => {
+  const mealId = parseInt(req.params.id, 10);
+  const selectedMeal = await knex("Meal").where("id", mealId);
+  res.send(selectedMeal);
+});
+
+meals.put("/:id", async (req, res) => {
+  const body = req.body;
+  const mealId = parseInt(req.params.id, 10);
+  const selectedMeal = await knex("Meal").where("id", mealId);
+  if (body) {
+    await knex("Meal").where("id", mealId).update(body);
+  }
+});
+
+meals.delete("/:id", async (req, res) => {
+  const mealId = parseInt(req.params.id, 10);
+  try {
+    const meal = await knex("Meal").where("id", mealId).first();
+
+    if (!meal) {
+      return res.status(404).json({ message: "Meal not found" });
+    }
+
+    const rowsDeleted = await knex("Meal").where("id", mealId).del();
+
+    if (rowsDeleted) {
+      res.status(200).json({ message: "Meal deleted successfully" });
+    } else {
+      res.status(500).json({ message: "Failed to delete meal" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "An error occurred while deleting the meal" });
+  }
+});
+
 export default meals;
