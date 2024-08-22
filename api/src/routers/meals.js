@@ -130,4 +130,20 @@ meals.delete("/:id", async (req, res) => {
   }
 });
 
+meals.get("/:meal_id/reviews", async (req, res) => {
+  const mealId = req.params.meal_id;
+
+  try {
+    const selectedFoodReview = await knex("Review")
+      .select("Meal.title", "Review.description", "Review.stars")
+      .join("Meal", "Meal.id", "=", "Review.meal_id")
+      .where("Meal.id", mealId);
+
+    res.send(selectedFoodReview);
+  } catch (error) {
+    console.error("Error retrieving reviews for meal:", error);
+    res.status(500).send({ error: "Error retrieving reviews for meal" });
+  }
+});
+
 export default meals;
