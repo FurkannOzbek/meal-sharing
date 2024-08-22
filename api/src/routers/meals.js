@@ -49,7 +49,32 @@ meals.get("/", async (req, res) => {
       const title = req.query.title;
 
       query = query.where("title", "like", `%${title}%`);
-      console.log(title);
+    }
+    // If the date is after query
+    if ("dateAfter" in req.query) {
+      const givenDate = req.query.dateAfter;
+      query = query.where("when", ">", givenDate);
+      console.log(givenDate);
+    }
+    // If the date is before query
+    if ("dateBefore" in req.query) {
+      const givenDate = req.query.dateBefore;
+      query = query.where("when", "<", givenDate);
+    }
+    if ("limit" in req.query) {
+      const limit = Number(req.query.limit);
+      query = query.limit(limit);
+    }
+    const sortKey = req.query.sortKey;
+    const sortDir = req.query.sortDir ? req.query.sortDir.toLowerCase() : "asc"; // Default to 'asc' if sortDir is not provided
+
+    if (sortKey) {
+      // Validate sortDir
+      if (sortDir !== "asc" && sortDir !== "desc") {
+        return res.status(400).send({ error: "Invalid sortDir. Must be 'asc' or 'desc'" });
+      }
+
+      query = query.orderBy(sortKey, sortDir);
     }
 
     const meals = await query;
