@@ -29,6 +29,7 @@ meals.get("/", async (req, res) => {
           .select(
             knex.raw("Meal.*, COALESCE(SUM(Reservation.number_of_guests), 0) AS total_guests")
           );
+
         // Non- Available reservations query
       } else {
         query = query
@@ -47,7 +48,6 @@ meals.get("/", async (req, res) => {
     // title match query
     if ("title" in req.query) {
       const title = req.query.title;
-
       query = query.where("title", "like", `%${title}%`);
     }
     // If the date is after query
@@ -87,7 +87,6 @@ meals.get("/", async (req, res) => {
 
 meals.post("/", async (req, res) => {
   const body = req.body;
-
   if (body) {
     await knex("Meal").insert(body);
   }
