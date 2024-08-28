@@ -47,19 +47,16 @@ apiRouter.get("/last-meal", async (req, res) => {
 apiRouter.get("/future-meals", async (req, res) => {
   const futureMeals = await knex("Meal").where("when", ">", knex.raw("NOW()"));
   res.send(futureMeals);
-  res.end();
 });
 
 apiRouter.get("/all-meals", async (req, res) => {
   const allMeals = await knex("Meal").orderBy("ID", "asc");
   res.send(allMeals);
-  res.end();
 });
 
 apiRouter.get("/past-meals", async (req, res) => {
   const pastMeals = await knex("Meal").where("when", "<", knex.raw("NOW()"));
   res.send(pastMeals);
-  res.end();
 });
 
 app.listen(process.env.PORT, () => {
