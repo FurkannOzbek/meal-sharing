@@ -1,4 +1,11 @@
-html,
+html {
+  background: #faf7f2;
+
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
 body,
 #root {
   margin: 0;

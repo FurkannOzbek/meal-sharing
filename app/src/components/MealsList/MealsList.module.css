@@ -1,0 +1,14 @@
+.gridContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 50px;
+  column-gap: 50px;
+  padding: 5rem;
+}
+
+.list {
+  padding: 1rem;
+}
+.title {
+  text-align: center;
+}
