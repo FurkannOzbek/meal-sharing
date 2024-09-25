@@ -5,14 +5,20 @@
   column-gap: 50px;
   padding: 5rem;
   align-items: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .list {
   padding: 1rem;
+  box-sizing: border-box;
 }
+
 .title {
   text-align: center;
+  font-size: 30px;
 }
+
 .buttonContainer {
   display: flex;
   justify-content: center;
@@ -44,9 +50,22 @@
   background-color: #f3f8ff;
   transform: translateY(-2px);
 }
+
 .arrow {
   font-size: 18px;
   margin-top: 5px;
   display: block;
   line-height: 1;
+}
+
+@media (max-width: 526px) {
+  .gridContainer {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    column-gap: 20px;
+  }
+
+  .list {
+    padding: 0.5rem;
+  }
 }
