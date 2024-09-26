@@ -1,7 +1,30 @@
 import express from "express";
 import knex from "../database_client.js";
+import dayjs from "dayjs";
 
 const meals = express.Router();
+
+meals.post("/add", async (req, res) => {
+  try {
+    const { title, description, location, when, max_reservations, price, img_url } = req.body;
+    const formattedDate = dayjs(when).format("YYYY-MM-DD HH:mm:ss");
+    // Insert new meal into the database
+    await knex("Meal").insert({
+      title,
+      description,
+      location,
+      when: formattedDate,
+      max_reservations,
+      price,
+      img_url,
+    });
+
+    res.status(201).send("Meal added successfully");
+  } catch (error) {
+    console.error("Error adding meal:", error);
+    res.status(500).send("Error adding meal: " + error.message);
+  }
+});
 
 meals.get("/", async (req, res) => {
   try {
