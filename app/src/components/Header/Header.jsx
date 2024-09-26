@@ -13,16 +13,16 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.nav}>
         {" "}
-        <a href="#">Meal Sharing</a>
+        <a href="/">Meal Sharing</a>
       </div>
       <nav className={styles.nav}>
-        <a href="#" className={styles.navItems}>
+        <a href="/" className={styles.navItems}>
           Home
         </a>
         <a href="#meals-section" className={styles.navItems}>
           Meals
         </a>
-        <a href="#" className={styles.navItems}>
+        <a href="behost" className={styles.navItems}>
           Be Host
         </a>
         <a href="#" className={styles.navItems}>
