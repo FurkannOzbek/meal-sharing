@@ -12,6 +12,24 @@ reviews.get("/", async (req, res) => {
   }
 });
 
+reviews.post("/add", async (req, res) => {
+  try {
+    const { title, description, stars, meal_id } = req.body;
+
+    await knex("Review").insert({
+      title,
+      description,
+      stars,
+      meal_id,
+    });
+
+    res.status(201).send("Review added successfully");
+  } catch (error) {
+    console.error("Error adding review:", error);
+    res.status(500).send("Error adding review: " + error.message);
+  }
+});
+
 reviews.get("/:id", async (req, res) => {
   const reviewId = parseInt(req.params.id);
   const selectedReview = await knex("Review").where("id", reviewId);

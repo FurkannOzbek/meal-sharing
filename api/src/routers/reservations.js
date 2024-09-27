@@ -8,11 +8,38 @@ reservations.get("/", async (req, res) => {
   res.send(reservations);
 });
 
-reservations.post("/", async (req, res) => {
-  const body = req.body;
+reservations.post("/add", async (req, res) => {
+  try {
+    const { number_of_guests, meal_id, contact_phonenumber, contact_name, contact_email } =
+      req.body;
 
-  if (body) {
-    await knex("Reservation").insert(body);
+    const meal = await knex("Meal").where("id", meal_id).first();
+    const maxReservation = meal.max_reservations;
+
+    const totalReservedResult = await knex("Reservation")
+      .where("meal_id", meal_id)
+      .sum("number_of_guests as total_reserved");
+
+    const totalReserved = Number(totalReservedResult[0].total_reserved) || 0;
+
+    if (totalReserved + number_of_guests > maxReservation) {
+      return res.status(400).json({
+        error: "Exceeds maximum reservation limit for this meal",
+      });
+    }
+
+    await knex("Reservation").insert({
+      number_of_guests,
+      meal_id,
+      contact_phonenumber,
+      contact_name,
+      contact_email,
+    });
+
+    res.status(201).send("Reservation added successfully");
+  } catch (error) {
+    console.error("Error adding reservation:", error);
+    res.status(500).send("Error adding reservation: " + error.message);
   }
 });
 
@@ -50,6 +77,32 @@ reservations.delete("/:id", async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "An error occurred while deleting the Reservation" });
+  }
+});
+
+reservations.get(`/meal/:id`, async (req, res) => {
+  try {
+    const { id: meal_id } = req.params;
+
+    // Check if meal_id is a valid number
+    if (isNaN(meal_id)) {
+      return res.status(400).json({ message: "Invalid meal ID" });
+    }
+
+    // Query the total number of guests reserved
+    const totalReservedResult = await knex("Reservation")
+      .where("meal_id", meal_id)
+      .sum("number_of_guests as total_reserved");
+
+    // Convert the sum result to a number, default to 0 if null/undefined
+    const totalReserved = Number(totalReservedResult[0]?.total_reserved) || 0;
+
+    // Respond with the total reserved number
+    res.json({ totalReserved });
+  } catch (error) {
+    console.error("Error fetching total reservations:", error);
+    // Use res.sendStatus instead of res.send to send the correct status code
+    res.sendStatus(500);
   }
 });
 
