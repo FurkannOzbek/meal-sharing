@@ -21,6 +21,7 @@
   color: var(--line_color);
   letter-spacing: 2px;
   transition: all 0.3s ease;
+  background-color: inherit;
 }
 .buttonText {
   display: flex;
@@ -254,4 +255,13 @@
     letter-spacing: 1px;
     transition: all 0.3s ease;
   }
+}
+button:disabled,
+.button:disabled {
+  cursor: not-allowed; /* Shows a not-allowed cursor */
+  opacity: 0.6; /* Faded look */
+}
+
+.button:disabled .buttonText {
+  color: #666; /* Change text color to indicate disabled state */
 }

@@ -25,6 +25,7 @@ function HomePage() {
           description: meal.description,
           price: meal.price,
           img_url: meal.img_url,
+          id: meal.id,
         }));
 
         setMeals(formattedMeals);

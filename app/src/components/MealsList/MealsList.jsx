@@ -26,6 +26,7 @@ export default function MealsList({ meals }) {
               description={meal.description}
               price={meal.price}
               img_url={meal.img_url}
+              id={meal.id}
             />
           ))}
         </div>

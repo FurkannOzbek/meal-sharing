@@ -1,6 +1,7 @@
 // Header.js
 import styles from "./Header.module.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,7 +20,7 @@ export default function Header() {
         <a href="/" className={styles.navItems}>
           Home
         </a>
-        <a href="#meals-section" className={styles.navItems}>
+        <a href="/#meals-section" className={styles.navItems}>
           Meals
         </a>
         <a href="behost" className={styles.navItems}>

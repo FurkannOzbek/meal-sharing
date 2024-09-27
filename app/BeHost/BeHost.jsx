@@ -10,7 +10,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import InputAdornment from "@mui/material/InputAdornment";
 import StyledButton from "../src/components/StyledButton/StyledButton";
-import axios from "axios"; // Import Axios
+import axios from "axios";
 
 export default function BeHost() {
   const [price, setPrice] = useState("");

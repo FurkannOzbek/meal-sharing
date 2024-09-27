@@ -38,30 +38,24 @@
   width: 310px;
 }
 
-.cardNumber {
-  display: inline-flex;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 15px;
-  color: black;
+.row {
+  display: flex;
+  align-items: center; /* Aligns items vertically in the center */
+  gap: 5px; /* Adjust spacing between the icon and the text */
 }
 
-.cardCircle {
-  border: 1px solid #000000;
-  border-radius: 50%;
-  display: inline-block;
-  line-height: 22px;
-  font-size: 12px;
-  height: 25px;
-  text-align: center;
-  width: 25px;
+.cardNumber {
+  display: inline-flex; /* Keeps the text inline */
+  align-items: center;
+  white-space: nowrap; /* Prevents text from breaking into multiple lines */
+  color: black;
 }
 
 .cardAuthor {
   display: block;
   font-size: 12px;
   letter-spacing: 0.5px;
-  margin: 15px 0 0;
+  margin: 25px 0 0;
   text-transform: uppercase;
 }
 
@@ -70,7 +64,7 @@
   font-size: 60px;
   font-weight: 300;
   line-height: 60px;
-  margin: 10px 0;
+  margin: 60px 0 20px 0;
 }
 
 .cardDescription {
@@ -276,4 +270,106 @@
     align-items: center;
     margin-top: 20px;
   }
+}
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.popupContent {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  width: 400px;
+  position: relative;
+  animation: slideDown 0.3s ease-out;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: transparent;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.2s;
+}
+
+.closeButton:hover {
+  color: #ff5a5a;
+}
+
+h2 {
+  margin-top: 0;
+  text-align: center;
+  color: #333;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  border-color: #007bff;
+}
+
+.submitButton {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  align-items: center;
+}
+
+.submitButton:hover {
+  background-color: #0056b3;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.bookButton {
+  display: flex;
+  justify-content: space-evenly;
 }
