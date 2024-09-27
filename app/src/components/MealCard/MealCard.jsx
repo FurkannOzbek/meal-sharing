@@ -6,8 +6,6 @@ import TextField from "@mui/material/TextField";
 import axios from "axios";
 import StarRating from "../StarRating/StarRating.jsx";
 
-// Star Rating Component
-
 export default function MealCard({
   title,
   description,
@@ -71,11 +69,10 @@ export default function MealCard({
       })
       .catch((error) => {
         console.error("Error adding meal:", error);
-        alert("Error adding meal: " + error.message); // Display an error message
+        alert("Error adding meal: " + error.message);
       });
   };
 
-  // Handle rating comment input change
   const handleRatingCommentInput = (e) => {
     setRatingComment(e.target.value);
   };
@@ -84,7 +81,6 @@ export default function MealCard({
     setRatingTitle(e.target.value);
   };
 
-  // Handle Rating form submit
   const handleRatingSubmit = (e) => {
     e.preventDefault();
     setShowRatePop(false);
@@ -97,7 +93,7 @@ export default function MealCard({
       })
       .catch((error) => {
         console.error("Error adding rating:", error);
-        alert("Error adding rating: " + error.message); // Display an error message
+        alert("Error adding rating: " + error.message);
       });
   };
 
