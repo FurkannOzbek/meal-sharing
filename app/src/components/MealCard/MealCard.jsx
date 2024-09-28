@@ -19,7 +19,7 @@ export default function MealCard({
     axios
       .get(`http://localhost:3001/api/reservations/meal/${id}`)
       .then((response) => {
-        const formattedData = response.data.totalReserved;
+        const formattedData = response.data.totalReserved || 0;
         setRightFormatData(formattedData);
       })
       .catch((error) => {
@@ -31,7 +31,7 @@ export default function MealCard({
     fetchReservationData();
   }, [id]);
 
-  const [rightFormatData, setRightFormatData] = useState(0);
+  const [rightFormatData, setRightFormatData] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
   const [showRatePop, setShowRatePop] = useState(false);
   const [contactName, setContactName] = useState("");
@@ -44,6 +44,7 @@ export default function MealCard({
   const [ratingComment, setRatingComment] = useState("");
   const [ratingTitle, setRatingTitle] = useState("");
 
+  const spotsLeft = max_reservation - rightFormatData;
   const handleNameInput = (e) => {
     setContactName(e.target.value);
   };
@@ -120,22 +121,26 @@ export default function MealCard({
             <div className={styles.cardBody}>
               <div className={styles.row}>
                 <IoMdPeople style={{ marginRight: "5px", verticalAlign: "middle" }} />
-                <span className={`${styles.cardNumber} ${styles.cardCircle} ${styles.subtle}`}>
-                  {max_reservation - rightFormatData} spot left
+                <span className={`${styles.cardNumber} ${styles.subtle}`}>
+                  {spotsLeft >= 0 ? spotsLeft : "0"} spot{spotsLeft === 1 ? "" : "s"} left
                 </span>
               </div>
               <span className={`${styles.cardAuthor} ${styles.subtle}`}>{location}</span>
-              <h2 className={styles.cardTitle}>{title}</h2>
+              <h2 className={styles.cardTitle}>
+                <a href={`/meals/${id}`}>{title}</a>
+              </h2>
               <span className={`${styles.cardDescription} ${styles.subtle}`}>{description}</span>
             </div>
-            <img src={img_url} alt={title} className={styles.cardMedia} />
+            <a href={`/meals/${id}`}>
+              <img src={img_url} alt={title} className={styles.cardMedia} />
+            </a>
           </div>
           <div className="test2">
             <div className={styles.container}>
               <StyledButton
-                text={max_reservation - rightFormatData <= 0 ? "No spots left" : "Book Meal"}
+                text={spotsLeft <= 0 ? "No spots left" : "Book Meal"}
                 onClick={() => setShowPopup(true)}
-                disabled={max_reservation - rightFormatData <= 0}
+                disabled={spotsLeft <= 0}
               />
               <StyledButton text="Rate Meal ★" onClick={() => setShowRatePop(true)} />
             </div>

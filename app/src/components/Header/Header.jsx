@@ -20,13 +20,13 @@ export default function Header() {
         <a href="/" className={styles.navItems}>
           Home
         </a>
-        <a href="/#meals-section" className={styles.navItems}>
+        <a href="/meals" className={styles.navItems}>
           Meals
         </a>
-        <a href="behost" className={styles.navItems}>
+        <a href="/behost" className={styles.navItems}>
           Be Host
         </a>
-        <a href="#" className={styles.navItems}>
+        <a href="/about" className={styles.navItems}>
           About
         </a>
       </nav>
