@@ -36,6 +36,24 @@ reviews.get("/:id", async (req, res) => {
   res.send(selectedReview);
 });
 
+reviews.get("/meal/:id", async (req, res) => {
+  const mealId = parseInt(req.params.id); // Ensure meal_id is parsed correctly to an integer
+  try {
+    // Ensure that the table name and column names are correct as per your database schema
+    const comments = await knex("Review").where("meal_id", mealId);
+
+    // Check if comments were found
+    if (comments.length === 0) {
+      return res.status(404).send({ error: "No comments found for this meal." });
+    }
+
+    res.send(comments);
+  } catch (error) {
+    console.error("Error retrieving comments:", error); // Log the error for debugging
+    res.status(500).send({ error: "Failed to retrieve comments." });
+  }
+});
+
 reviews.put("/:id", async (req, res) => {
   const reviewId = parseInt(req.params.id);
   const body = req.body;
