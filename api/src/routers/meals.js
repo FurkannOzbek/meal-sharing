@@ -7,6 +7,9 @@ const meals = express.Router();
 meals.post("/add", async (req, res) => {
   try {
     const { title, description, location, when, max_reservations, price, img_url } = req.body;
+    if (!dayjs(when).isValid()) {
+      return res.status(400).send("Wrong Date Format, please provide valid date");
+    }
     const formattedDate = dayjs(when).format("YYYY-MM-DD HH:mm:ss");
     // Insert new meal into the database
     await knex("Meal").insert({
