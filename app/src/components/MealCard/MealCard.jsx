@@ -20,7 +20,7 @@ export default function MealCard({
       .get(`${import.meta.env.VITE_API_URL}/reservations/meal/${id}`)
       .then((response) => {
         const formattedData = response.data.totalReserved || 0;
-        setRightFormatData(formattedData);
+        setTotalReservations(formattedData);
       })
       .catch((error) => {
         console.error("Error fetching reservation data:", error);
@@ -31,7 +31,7 @@ export default function MealCard({
     fetchReservationData();
   }, [id]);
 
-  const [rightFormatData, setRightFormatData] = useState(null);
+  const [totalReservations, setTotalReservations] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
   const [showRatePop, setShowRatePop] = useState(false);
   const [contactName, setContactName] = useState("");
@@ -44,7 +44,7 @@ export default function MealCard({
   const [ratingComment, setRatingComment] = useState("");
   const [ratingTitle, setRatingTitle] = useState("");
 
-  const spotsLeft = max_reservation - rightFormatData;
+  const spotsLeft = max_reservation - totalReservations;
   const handleNameInput = (e) => {
     setContactName(e.target.value);
   };
