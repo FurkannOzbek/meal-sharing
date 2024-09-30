@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import hyfLogo from "../../assets/hyf.svg";
-import MealsList from "../MealsList/MealsList";
+import MealsList from "../../components/MealsList/MealsList";
 import { useState } from "react";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 import { Parallax, Background } from "react-parallax";
 import image from "../../assets/food.jpg";
 import styles from "./HomePage.module.css";
