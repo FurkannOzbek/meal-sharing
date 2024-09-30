@@ -70,7 +70,7 @@ export default function MealCard({
       })
       .catch((error) => {
         console.error("Error adding meal:", error);
-        alert("Error adding meal: " + error.message);
+        alert("Error adding meal: " + error.response.data.error);
       });
   };
 
