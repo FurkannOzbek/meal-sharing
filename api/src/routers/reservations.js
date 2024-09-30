@@ -13,28 +13,49 @@ reservations.post("/add", async (req, res) => {
     const { number_of_guests, meal_id, contact_phonenumber, contact_name, contact_email } =
       req.body;
 
-    const meal = await knex("Meal").where("id", meal_id).first();
-    const maxReservation = meal.max_reservations;
-
-    const totalReservedResult = await knex("Reservation")
-      .where("meal_id", meal_id)
-      .sum("number_of_guests as total_reserved");
-
-    const totalReserved = Number(totalReservedResult[0].total_reserved) || 0;
-
-    if (totalReserved + number_of_guests > maxReservation) {
-      return res.status(400).json({
-        error: "Exceeds maximum reservation limit for this meal",
-      });
+    // Validation and extra try-catch for meal existence
+    let meal;
+    try {
+      meal = await knex("Meal").where("id", meal_id).first();
+      console.log(meal);
+      if (!meal) {
+        return res.status(404).json({ error: "Meal not found!" });
+      }
+    } catch (error) {
+      return res.status(500).json({ error: "Error fetching meal info", details: error.message });
     }
+    // Calculation of total reservations
 
-    await knex("Reservation").insert({
-      number_of_guests,
-      meal_id,
-      contact_phonenumber,
-      contact_name,
-      contact_email,
-    });
+    let totalReserved;
+    try {
+      const maxReservation = meal.max_reservations;
+      const totalReservedResult = await knex("Reservation")
+        .where("meal_id", meal_id)
+        .sum("number_of_guests as total_reserved");
+      totalReserved = Number(totalReservedResult[0].total_reserved) || 0;
+      if (totalReserved + number_of_guests > maxReservation) {
+        return res.status(400).json({
+          error: "Exceeds maximum reservation limit for this meal",
+        });
+      }
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ error: "Error calculating total reservations", details: error.message });
+    }
+    // Insert new reservation
+
+    try {
+      await knex("Reservation").insert({
+        number_of_guests,
+        meal_id,
+        contact_phonenumber,
+        contact_name,
+        contact_email,
+      });
+    } catch (error) {
+      return res.status(500).json({ error: "Error inserting reservation", details: error.message });
+    }
 
     res.status(201).send("Reservation added successfully");
   } catch (error) {
