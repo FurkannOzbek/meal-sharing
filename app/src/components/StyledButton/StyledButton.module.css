@@ -1,15 +1,3 @@
-.typeA {
-  --line_color: #555555;
-  --back_color: #ffecf6;
-}
-.typeB {
-  --line_color: #1b1919;
-  --back_color: #e9ecff;
-}
-.typeC {
-  --line_color: #000000;
-  --back_color: #defffa;
-}
 .button {
   position: relative;
   z-index: 0;
@@ -22,6 +10,8 @@
   letter-spacing: 2px;
   transition: all 0.3s ease;
   background-color: inherit;
+  --line_color: #000000;
+  --back_color: #defffa;
 }
 .buttonText {
   display: flex;
