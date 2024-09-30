@@ -1,7 +1,7 @@
 import Header from "../src/components/Header/Header";
 import Footer from "../src/components/Footer/Footer";
-import styles from "./About.module.css"; // Ensure correct import of CSS module
-import image from "../src/assets/spices.jpg"; // Replace with your actual image path
+import styles from "./About.module.css";
+import image from "../src/assets/spices.jpg";
 
 export default function About() {
   return (

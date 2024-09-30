@@ -4,8 +4,8 @@ import MealCard from "../../components/MealCard/MealCard";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import styles from "./MealDetails.module.css";
-import Slider from "react-slick"; // Import the Slider component from react-slick
-import "slick-carousel/slick/slick.css"; // Import slick carousel styles
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import "./MealDetails.module.css";
@@ -67,7 +67,7 @@ export default function MealDetails() {
       <div
         style={{
           position: "absolute",
-          bottom: "0", // Increase this value to place dots at the bottom of the commentSection
+          bottom: "0",
           width: "100%",
           display: "flex",
           justifyContent: "center",

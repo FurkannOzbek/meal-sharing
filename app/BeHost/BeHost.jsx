@@ -51,7 +51,7 @@ export default function BeHost() {
   }
 
   function handleSubmit(e) {
-    e.preventDefault(); // Prevent default form submission behavior
+    e.preventDefault();
 
     // Prepare the data to be sent to the backend
     const formData = {
@@ -73,7 +73,7 @@ export default function BeHost() {
       })
       .catch((error) => {
         console.error("Error adding meal:", error);
-        alert("Error adding meal: " + error.message); // Display an error message
+        alert("Error adding meal: " + error.response.data); // Display an error message
       });
   }
 
