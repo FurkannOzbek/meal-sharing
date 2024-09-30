@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 export default function Meals() {
-  const url = "http://localhost:3001/api/all-meals";
+  const url = `${import.meta.env.VITE_API_URL}/all-meals`;
 
   const [meals, setMeals] = useState([]);
   useEffect(() => {

@@ -17,7 +17,7 @@ export default function MealCard({
 }) {
   const fetchReservationData = () => {
     axios
-      .get(`http://localhost:3001/api/reservations/meal/${id}`)
+      .get(`${import.meta.env.VITE_API_URL}/reservations/meal/${id}`)
       .then((response) => {
         const formattedData = response.data.totalReserved || 0;
         setRightFormatData(formattedData);
@@ -62,7 +62,7 @@ export default function MealCard({
     e.preventDefault();
     setShowPopup(false);
     axios
-      .post("http://localhost:3001/api/reservations/add", formData)
+      .post(`${import.meta.env.VITE_API_URL}/reservations/add`, formData)
       .then((response) => {
         console.log("Reservation added successfully:", response.data);
         alert("Reservation added successfully!");
@@ -87,7 +87,7 @@ export default function MealCard({
     setShowRatePop(false);
 
     axios
-      .post("http://localhost:3001/api/reviews/add", ratingData)
+      .post(`${import.meta.env.VITE_API_URL}/reviews/add`, ratingData)
       .then((response) => {
         console.log("Rating added successfully:", response.data);
         alert("Rating added successfully!");

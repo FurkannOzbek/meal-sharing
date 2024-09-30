@@ -65,10 +65,10 @@ export default function BeHost() {
 
     // Send a POST request to backend API
     axios
-      .post("http://localhost:3001/api/meals/add", formData)
+      .post(`${import.meta.env.VITE_API_URL}/meals/add`, formData)
       .then((response) => {
         console.log("Meal added successfully:", response.data);
-        alert("Meal added successfully!"); // Optional: alert the user or redirect
+        alert("Meal added successfully!");
       })
       .catch((error) => {
         console.error("Error adding meal:", error);

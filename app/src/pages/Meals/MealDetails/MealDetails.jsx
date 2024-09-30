@@ -19,11 +19,11 @@ export default function MealDetails() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/api/meals/${id}`);
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/meals/${id}`);
         const jsonData = await response.json();
         setMeal(jsonData[0]);
 
-        const responseComment = await fetch(`http://localhost:3001/api/reviews/meal/${id}`);
+        const responseComment = await fetch(`${import.meta.env.VITE_API_URL}/reviews/meal/${id}`);
         const jsonCommentDatas = await responseComment.json();
 
         setCommentDatas(Array.isArray(jsonCommentDatas) ? jsonCommentDatas : []);
