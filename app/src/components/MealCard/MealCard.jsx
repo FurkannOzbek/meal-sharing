@@ -117,25 +117,24 @@ export default function MealCard({
     <>
       <div className={styles.cardContainer}>
         <div className={`${styles.card} ${styles.uClearfix}`}>
-          <div className="test">
-            <div className={styles.cardBody}>
-              <div className={styles.row}>
-                <IoMdPeople style={{ marginRight: "5px", verticalAlign: "middle" }} />
-                <span className={`${styles.cardNumber} ${styles.subtle}`}>
-                  {spotsLeft >= 0 ? spotsLeft : "0"} spot{spotsLeft === 1 ? "" : "s"} left
-                </span>
-              </div>
-              <span className={`${styles.cardAuthor} ${styles.subtle}`}>{location}</span>
-              <h2 className={styles.cardTitle}>
-                <a href={`/meals/${id}`}>{title}</a>
-              </h2>
-              <span className={`${styles.cardDescription} ${styles.subtle}`}>{description}</span>
+          <div className={styles.cardBody}>
+            <div className={styles.row}>
+              <IoMdPeople style={{ marginRight: "5px", verticalAlign: "middle" }} />
+              <span className={`${styles.cardNumber} ${styles.subtle}`}>
+                {spotsLeft >= 0 ? spotsLeft : "0"} spot{spotsLeft === 1 ? "" : "s"} left
+              </span>
             </div>
-            <a href={`/meals/${id}`}>
-              <img src={img_url} alt={title} className={styles.cardMedia} />
-            </a>
+            <span className={`${styles.cardAuthor} ${styles.subtle}`}>{location}</span>
+            <h2 className={styles.cardTitle}>
+              <a href={`/meals/${id}`}>{title}</a>
+            </h2>
+            <span className={`${styles.cardDescription} ${styles.subtle}`}>{description}</span>
           </div>
-          <div className="test2">
+          <a href={`/meals/${id}`}>
+            <img src={img_url} alt={title} className={styles.cardMedia} />
+          </a>
+
+          <div className="buttonsContainer">
             <div className={styles.container}>
               <StyledButton
                 text={spotsLeft <= 0 ? "No spots left" : "Book Meal"}
