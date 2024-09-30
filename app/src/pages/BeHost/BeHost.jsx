@@ -1,7 +1,6 @@
-import Header from "../src/components/Header/Header";
-import Footer from "../src/components/Footer/Footer";
+import Header from "../../components/Header/Header";
 import { useState } from "react";
-import image from "../src/assets/spices.jpg";
+import image from "../../assets/spices.jpg";
 import styles from "./BeHost.module.css"; // Ensure correct import of CSS module
 import TextField from "@mui/material/TextField";
 import { DateField } from "@mui/x-date-pickers/DateField";
@@ -9,7 +8,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import InputAdornment from "@mui/material/InputAdornment";
-import StyledButton from "../src/components/StyledButton/StyledButton";
+import StyledButton from "../../components/StyledButton/StyledButton";
 import axios from "axios";
 
 export default function BeHost() {

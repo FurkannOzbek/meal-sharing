@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import MealCard from "../../components/MealCard/MealCard";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
+import MealCard from "../../../components/MealCard/MealCard";
+import Header from "../../../components/Header/Header";
+import Footer from "../../../components/Footer/Footer";
 import styles from "./MealDetails.module.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
