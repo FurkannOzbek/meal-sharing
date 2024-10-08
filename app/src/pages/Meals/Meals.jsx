@@ -3,6 +3,7 @@ import Footer from "../../components/Footer/Footer";
 import MealsList from "../../components/MealsList/MealsList";
 import { useState } from "react";
 import { useEffect } from "react";
+import styles from "./Meals.module.css";
 
 export default function Meals() {
   const url = `${import.meta.env.VITE_API_URL}/all-meals`;
@@ -34,6 +35,7 @@ export default function Meals() {
   return (
     <>
       <Header> </Header>
+
       <MealsList meals={meals} />
       <Footer></Footer>
     </>
