@@ -6,7 +6,7 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react()],
     server: {
-      port: env.PORT,
+      port: Number(env.PORT) || 3000,
     },
   };
 });
