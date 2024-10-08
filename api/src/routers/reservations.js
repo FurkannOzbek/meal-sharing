@@ -17,7 +17,7 @@ reservations.post("/add", async (req, res) => {
     let meal;
     try {
       meal = await knex("Meal").where("id", meal_id).first();
-      console.log(meal);
+
       if (!meal) {
         return res.status(404).json({ error: "Meal not found!" });
       }
