@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import styles from "./Meals.module.css";
 
 export default function Meals() {
-  const url = `${import.meta.env.VITE_API_URL}/all-meals`;
+  const url = `${import.meta.env.VITE_API_URL}/meals`;
 
   const [meals, setMeals] = useState([]);
   useEffect(() => {
