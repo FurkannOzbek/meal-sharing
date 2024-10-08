@@ -9,7 +9,7 @@ import image from "../../assets/food.jpg";
 import styles from "./HomePage.module.css";
 
 function HomePage() {
-  const url = `${import.meta.env.VITE_API_URL}/all-meals`;
+  const url = `${import.meta.env.VITE_API_URL}/api/meals`;
 
   const [meals, setMeals] = useState([]);
   useEffect(() => {
