@@ -4,7 +4,7 @@ import knex from "../database_client.js";
 const reservations = express.Router();
 
 reservations.get("/", async (req, res) => {
-  const reservations = await knex("Reservation").orderBy("ID", "asc");
+  const reservations = await knex("Reservation").select("*");
   res.send(reservations);
 });
 
