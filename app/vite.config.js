@@ -8,5 +8,8 @@ export default defineConfig(({ mode }) => {
     server: {
       port: Number(env.PORT) || 3000,
     },
+    build: {
+      outDir: "dist", // Ensure the build directory is set to "dist"
+    },
   };
 });
