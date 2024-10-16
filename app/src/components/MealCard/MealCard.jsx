@@ -35,8 +35,8 @@ export default function MealCard({
   const [showPopup, setShowPopup] = useState(false);
   const [showRatePop, setShowRatePop] = useState(false);
   const [contactName, setContactName] = useState("");
-  const [numberOfGuests, setNumberOfGuests] = useState(0);
-  const [contactPhoneNumber, setContactPhoneNumber] = useState(0);
+  const [numberOfGuests, setNumberOfGuests] = useState("");
+  const [contactPhoneNumber, setContactPhoneNumber] = useState("");
   const [contactEmail, setContactEmail] = useState("");
 
   // Rating state variables
@@ -52,7 +52,25 @@ export default function MealCard({
     setNumberOfGuests(Number(e.target.value));
   };
   const handlePhoneInput = (e) => {
-    setContactPhoneNumber(e.target.value);
+    let input = e.target.value;
+
+    // Allow only numbers and the '+' character
+    let sanitizedInput = input.replace(/[^0-9+]/g, "");
+
+    // Check if the number starts with '+45' (for international numbers)
+    if (sanitizedInput.startsWith("+45")) {
+      // Limit to 11 characters total (+45 and 8 digits)
+      if (sanitizedInput.length > 11) {
+        sanitizedInput = sanitizedInput.slice(0, 11);
+      }
+    } else {
+      // Limit to 8 digits for local Danish numbers
+      if (sanitizedInput.length > 8) {
+        sanitizedInput = sanitizedInput.slice(0, 8);
+      }
+    }
+
+    setContactPhoneNumber(sanitizedInput);
   };
   const handleEmailInput = (e) => {
     setContactEmail(e.target.value);
@@ -111,6 +129,22 @@ export default function MealCard({
     stars: rating,
     description: ratingComment,
     title: ratingTitle,
+  };
+
+  const formatPhoneNumber = (phoneNumber) => {
+    const sanitizedNumber = phoneNumber.replace(/\s+/g, "");
+
+    // Local Danish number format: 12 34 56 78 (only 8 digits)
+    if (/^\d{8}$/.test(sanitizedNumber)) {
+      return sanitizedNumber.replace(/(\d{2})(\d{2})(\d{2})(\d{2})/, "$1 $2 $3 $4");
+    }
+
+    // International Danish number format: +45 12 34 56 78
+    if (/^\+45\d{8}$/.test(sanitizedNumber)) {
+      return sanitizedNumber.replace(/(\+45)(\d{2})(\d{2})(\d{2})(\d{2})/, "$1 $2 $3 $4 $5");
+    }
+
+    return phoneNumber; // Return unformatted if it's invalid
   };
 
   return (
@@ -178,7 +212,7 @@ export default function MealCard({
                 variant="filled"
                 name="phone"
                 label="Contact Phone Number"
-                value={contactPhoneNumber}
+                value={formatPhoneNumber(contactPhoneNumber)}
               />
               <TextField
                 onChange={handleEmailInput}
