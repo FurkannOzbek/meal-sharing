@@ -12,10 +12,44 @@ reviews.get("/", async (req, res) => {
   }
 });
 
+reviews.post("/add", async (req, res) => {
+  try {
+    const { title, description, stars, meal_id } = req.body;
+
+    await knex("Review").insert({
+      title,
+      description,
+      stars,
+      meal_id,
+    });
+
+    res.status(201).send("Review added successfully");
+  } catch (error) {
+    console.error("Error adding review:", error);
+    res.status(500).send("Error adding review: " + error.message);
+  }
+});
+
 reviews.get("/:id", async (req, res) => {
   const reviewId = parseInt(req.params.id);
   const selectedReview = await knex("Review").where("id", reviewId);
   res.send(selectedReview);
+});
+
+reviews.get("/meal/:id", async (req, res) => {
+  const mealId = parseInt(req.params.id);
+  try {
+    const comments = await knex("Review").where("meal_id", mealId);
+
+    if (comments.length === 0) {
+      return res.status(404).send({ error: "No comments found for this meal." });
+    }
+
+    res.send(comments);
+  } catch (error) {
+    console.error("Error retrieving comments:", error);
+    res.status(500).send({ error: "Failed to retrieve comments." });
+  }
 });
 
 reviews.put("/:id", async (req, res) => {

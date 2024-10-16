@@ -1,8 +1,42 @@
-html,
+html {
+  background: #faf7f2;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
 body,
 #root {
   margin: 0;
   padding: 0;
   height: 100%;
   width: 100%;
+}
+:global {
+  @import "node_modules/slick-carousel/slick/slick";
+}
+.slick-dots {
+  position: absolute !important;
+  bottom: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  width: 100% !important;
+  list-style: none !important;
+  padding: 0 !important;
+  margin-top: 300px !important;
+}
+
+.slick-dots li {
+  margin: 0 5px !important;
+}
+
+.slick-dots li button:before {
+  color: #000 !important;
+  font-size: 12px !important;
+  margin-top: 150px;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #ff6347 !important;
 }

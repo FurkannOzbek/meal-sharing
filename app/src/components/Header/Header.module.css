@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Guides:wght@400..700&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Great+Vibes&display=swap");
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  position: relative;
+  z-index: 20; /* Ensure the header stays above the mobile nav */
+}
+
+.brand {
+  font-size: 24px;
+  font-weight: bold;
+  font-family: "Edu AU VIC WA NT Guides", cursive;
+  color: #fff;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+  font-family: "Edu AU VIC WA NT Guides", cursive;
+  font-size: 24x;
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 24px;
+  transition: color 0.3s;
+}
+
+.nav a:hover {
+  color: #5dd7fc;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin: 4px 0;
+  transition: all 0.3s ease;
+}
+
+.hamburger.open div:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 10px);
+}
+
+.hamburger.open div:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open div:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -10px);
+}
+
+/* Mobile navigation menu initially hidden */
+.mobileNav {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: absolute;
+  top: 100%; /* Position below the header */
+  left: 0;
+  right: 0;
+  height: 0;
+  overflow: hidden;
+  background-color: #333;
+  padding: 0 10px;
+  border-radius: 0 0 5px 5px;
+  transition:
+    height 0.5s ease,
+    opacity 0.5s ease;
+  opacity: 0;
+  z-index: 10;
+}
+
+/* Show the mobile navigation when open */
+.mobileNav.open {
+  height: 160px;
+  opacity: 1;
+  padding: 10px 10px;
+}
+
+.mobileNav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .nav .navItems {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+}
