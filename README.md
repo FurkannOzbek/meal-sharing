@@ -26,3 +26,11 @@ The primary objective of Meal Sharing is to foster community engagement through 
 - Review and Rating System: Enables users to provide feedback on meals and hosts, fostering community trust and improving service quality.
 
 The primary objective of Meal Sharing is to foster community engagement through the sharing of culinary creations, ensuring users can enjoy the joys of homemade cooking together.
+
+## Screenshots
+
+![mealshare-1](https://github.com/user-attachments/assets/b21cc00e-b4ef-4ce3-b8e7-476fe62b9b87)
+![mealshare-2](https://github.com/user-attachments/assets/9299d97e-6d55-4d7f-a21d-721ba204e46c)
+![mealshare-3](https://github.com/user-attachments/assets/0997429f-9214-489b-817d-165c12df6d98)
+![mealshare-4](https://github.com/user-attachments/assets/a0a230a6-6838-4639-ae7d-4733e0f62370)
+![mealshare-5](https://github.com/user-attachments/assets/23d003dd-e498-4b14-a5d5-adc44f850963)
