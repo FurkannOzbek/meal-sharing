@@ -2,7 +2,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
-import nestedRouter from "./routers/nested.js";
+
 import meals from "./routers/meals.js";
 import reservations from "./routers/reservations.js";
 import reviews from "./routers/reviews.js";
@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 const apiRouter = express.Router();
 
 app.use("/api", apiRouter);
-apiRouter.use("/nested", nestedRouter);
+
 apiRouter.use("/meals", meals);
 apiRouter.use("/reservations", reservations);
 apiRouter.use("/reviews", reviews);
