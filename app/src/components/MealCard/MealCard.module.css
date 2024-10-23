@@ -1,0 +1,378 @@
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.uClearfix:before,
+.uClearfix:after {
+  content: " ";
+  display: table;
+}
+
+.uClearfix:after {
+  clear: both;
+}
+
+.subtle {
+  color: #aaa;
+}
+
+.cardContainer {
+  margin: 25px auto 0;
+  position: relative;
+  width: 100%;
+}
+
+.card {
+  background-color: #fff;
+  padding: 30px;
+  position: relative;
+  box-shadow: 0 0 5px rgba(75, 75, 75, 0.07);
+  z-index: 1;
+}
+
+.cardBody {
+  display: inline-block;
+  font-size: clamp(6px, 2.5vw, 14px);
+  width: 310px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cardNumber {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  color: black;
+}
+
+.cardAuthor {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  margin: 25px 0 0;
+  text-transform: uppercase;
+}
+
+.cardTitle {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 60px;
+  font-weight: 300;
+  line-height: 60px;
+  margin: 60px 0 20px 0;
+}
+.cardTitle a {
+  text-decoration: none;
+  color: #333;
+}
+.cardDescription {
+  display: inline-block;
+  font-weight: 300;
+  line-height: 22px;
+  margin: 10px 0;
+}
+
+.cardRead {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin: 60px 0 20px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  border: 1px solid #000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cardTag {
+  float: right;
+  margin: 5px 0 0;
+}
+
+.cardMedia {
+  float: right;
+  width: 300px;
+  height: 400px;
+}
+
+.cardShadow {
+  background-color: #fff;
+  box-shadow:
+    0 2px 25px 2px rgba(0, 0, 0, 1),
+    0 2px 50px 2px rgba(0, 0, 0, 1),
+    0 0 100px 3px rgba(0, 0, 0, 0.25);
+  height: 1px;
+  margin: -1px auto 0;
+  width: 80%;
+  z-index: -1;
+}
+.container {
+  margin-top: 50px;
+  width: 100%;
+  float: left;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+@media (max-width: 1550px) {
+  .cardBody {
+    width: 250px;
+    font-size: 12px;
+  }
+  .cardTitle {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 40px;
+    font-weight: 300;
+    line-height: 60px;
+    margin: 10px 0;
+  }
+  .cardMedia {
+    float: right;
+    width: 200px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 1260px) {
+  .cardNumber {
+    margin-top: 0;
+  }
+  .cardBody {
+    width: 250px;
+    font-size: 10px;
+  }
+  .cardTitle {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 35px;
+    font-weight: 300;
+    line-height: 60px;
+    margin: 0;
+  }
+  .cardMedia {
+    float: right;
+    width: 150px;
+    height: 200px;
+  }
+  .cardDescription {
+    display: inline-block;
+    font-weight: 300;
+    line-height: 22px;
+    margin: 0;
+  }
+}
+
+@media (max-width: 1140px) {
+  .cardNumber {
+    margin-top: 0;
+  }
+  .cardBody {
+    width: 170px;
+    font-size: 10px;
+  }
+  .cardTitle {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 2.5vw;
+    font-weight: 300;
+    line-height: 60px;
+    margin: 0;
+  }
+  .cardMedia {
+    float: right;
+    width: 150px;
+    height: 200px;
+  }
+  .cardDescription {
+    display: inline-block;
+    font-size: 0.9vw;
+    font-weight: 300;
+    line-height: 22px;
+    margin: 0;
+  }
+}
+@media (max-width: 980px) {
+  .cardNumber {
+    margin-top: 0;
+  }
+  .cardBody {
+    width: 100%;
+    font-size: 10px;
+  }
+  .cardTitle {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 25px;
+    font-weight: 300;
+    line-height: 60px;
+    margin: 0;
+  }
+  .cardMedia {
+    display: none;
+    width: 120px;
+    height: 170px;
+  }
+  .cardDescription {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 22px;
+    margin: 0;
+  }
+}
+
+@media (max-width: 428px) {
+  .cardContainer {
+    margin: 25px auto 0;
+    position: relative;
+    width: 75%;
+  }
+
+  .cardNumber {
+    margin-top: 0;
+  }
+  .cardBody {
+    width: 100%;
+    font-size: 10px;
+  }
+  .cardTitle {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 7.5vw;
+    font-weight: 300;
+    line-height: 60px;
+    margin: 0;
+  }
+  .cardMedia {
+    display: none;
+    width: 120px;
+    height: 170px;
+  }
+  .cardDescription {
+    display: inline-block;
+    font-size: 2.5vw;
+    font-weight: 300;
+    line-height: 22px;
+    margin: 0;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+}
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.popupContent {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  width: 400px;
+  position: relative;
+  animation: slideDown 0.3s ease-out;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: transparent;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.2s;
+}
+
+.closeButton:hover {
+  color: #ff5a5a;
+}
+
+h2 {
+  margin-top: 0;
+  text-align: center;
+  color: #333;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  border-color: #007bff;
+}
+
+.submitButton {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  align-items: center;
+}
+
+.submitButton:hover {
+  background-color: #0056b3;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.bookButton {
+  display: flex;
+  justify-content: space-evenly;
+}
