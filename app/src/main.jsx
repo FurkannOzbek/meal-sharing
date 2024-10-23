@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage.jsx";
 import BeHost from "./pages/BeHost/BeHost.jsx";
-import TestPage from "./components/TestPage/TestPage.jsx";
+
 import "./main.css";
 import { ParallaxProvider } from "react-scroll-parallax";
 import Meals from "./pages/Meals/Meals.jsx";
